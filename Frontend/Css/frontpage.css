@@ -1,0 +1,43 @@
+.main, .second-main{
+    border:1px solid rgba(47, 83, 7, 0.29);
+    box-shadow: 1px 1px rgba(47, 83, 7, 0.29);
+    width:79%;
+    display: inline-block;
+    height:auto;
+    padding:0 25px;
+}
+.second-main{
+    margin-top:50px;
+}
+
+.side-bar{
+    border:1px solid rgba(47, 83, 7, 0.29);
+    box-shadow: 1px 1px rgba(47, 83, 7, 0.29);
+    width:20%;
+    float: right;
+    min-height: 400px;
+    padding:5px;
+}
+.main-header{
+    padding:25px 50px;
+    border-bottom:1px solid #000;
+    height: 150px;
+    margin-bottom:50px;
+}
+.main-header h1{
+    font-size: 66px;
+    display: inline-block;
+}
+.main-header span{
+    display: inline-block;
+    margin-left:150px;
+    font-size: 26px;
+}
+.main div:nth-child(2),.main div:nth-child(3){
+    border:1px solid blue;
+    margin:15px 0;
+    padding:15px 10px;
+}
+.main div:nth-child(2) div, .main div:nth-child(3) div {
+    border:1px solid red;
+}

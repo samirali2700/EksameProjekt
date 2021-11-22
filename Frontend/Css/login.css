@@ -1,0 +1,47 @@
+.container{
+    width:35%;
+    position:relative;
+    top:100px;
+    left:32.5%;
+    height:550px;
+    border:1px solid black;
+    padding:100px 0;
+    text-align: center;
+    background: #2b2b35;
+    color:#fff;
+    font-family: MTG Sans,Helvetica,Arial,sans-serif;
+}
+h1{
+    margin-bottom:25px;
+}
+::placeholder{
+    color:#eee;
+}
+input{
+    color:#eee;
+    padding:5px 7px;
+    display: block;
+    width:65%;
+    height:45px;
+    margin:0 auto 15px auto;
+    background-color: rgb(116, 116, 116);
+    font-size: 16px;
+}
+
+button{
+    display: block;
+    width:22.5%;
+    height:45px;
+    margin: 55px auto 0 auto;
+    font-size: 16px;
+    background: #ffffff;
+}
+input, button, .container{
+    border-radius: 5px;
+}
+input:focus{outline:none;}
+button:hover{
+    cursor:pointer;
+    background: #8b8b8b;
+    color:#fff;
+}

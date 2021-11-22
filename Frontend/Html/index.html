@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel = "stylesheet" href="../Css/Main.css">
+    <link rel = "stylesheet" href="../Css/login.css">
+</head>
+<body>
+
+    <div class = "container">
+        <h1>Log ind</h1>
+        <form id = "login-form" action = "http://localhost:7777/loginForm" method = "post">
+            <input name = "username" type = "text" placeholder="Bruger" required autocomplete="username">
+            <input name = "password" type = "password" placeholder="Adganskode" required autocomplete="password">
+            <button>Log In</button>
+        </form>
+    </div>
+<script src="../Js/login.js"></script>
+</body>
+</html>

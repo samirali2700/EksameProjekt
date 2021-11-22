@@ -1,0 +1,98 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background: rgba(47, 83, 7, 0.29);
+}
+li{
+    list-style-type: none;
+}
+#current{
+    border-bottom: 2px solid #000;
+
+}
+a{
+    text-decoration: none;
+    color:#eee;
+}
+
+.header{
+    height:100px;
+    background: rgba(61, 101, 16, 0.57);
+    /*background: rgba(47, 83, 7, 0.78);*/
+    border-bottom:2px solid rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    width:150px;
+
+    border:1px solid black;
+    height:100%;
+}
+.nav-bar{
+    width:40%;
+    height:100%;
+}
+.nav-bar ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:100%;
+}
+.nav-bar li {
+    color:#eee;
+    font-size: 26px;
+    display: block;
+    width:100%;
+    padding:10px 0;
+    text-align: center;
+}
+.nav-bar li:hover{
+    border-bottom: 2px solid #000000;
+    cursor:pointer;
+    color:#000;
+}
+
+#userInfo{
+    width:150px;
+    height:100%;
+
+}
+#userInfo p {
+    text-align: center;
+    margin:25% 0;
+    padding:5px 0;
+    font-size: 18px;
+}
+
+
+.hero{
+    background: #fff;
+    max-width: 80%;
+    height:auto;
+    border:1px solid rgba(47, 83, 7, 0.78);
+    box-shadow: 1px 1px rgba(47, 83, 7, 0.78);
+    margin:100px auto;
+    padding:35px 15px;
+    border-radius: 8px;
+}
+
+
+table{
+    border-collapse: collapse;
+    width:100%;
+}
+tr{border:1px solid #000;}
+th{
+    height:25px;
+    background: rgba(139, 139, 139, 0.23);
+
+}
+td{
+    text-align: center;
+    border-right:0.5px solid #000;
+    height:35px;
+}
