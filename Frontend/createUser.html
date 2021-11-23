@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oprette Virksomhed</title>
+
+
+    <style>
+        body {
+            background: rgba(47, 83, 7, 0.29);
+        }
+        h1{
+            margin-top:20px;
+            text-align: center;
+            font-size: 56px;
+            text-shadow: -2px -1px #52d400, -2px 1px 2px black;
+        }
+        .hero{
+            width:60%;
+
+            margin:0 auto;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .container{
+            border:1px solid rgba(4, 130, 11, 0.68);
+            margin: 0 auto;
+            text-align: left;
+            padding:75px 75px 75px 75px;
+            border-radius: 8px;
+            font-size: 18px;
+            background-color: #eee;
+
+        }
+        form{
+            display: grid;
+            grid-template-columns: 1.5fr 2fr;
+            grid-row-gap:20px;
+            grid-column-gap: 15px;
+            align-items: center;
+        }
+        label, input{
+            height:30px;
+        }
+        label{
+            border-bottom: 1px solid black;
+        }
+        input{
+            padding:0 15px;
+            border:1px solid #000;
+        }
+        input:focus{outline:none;}
+        button{
+            grid-column: 1 / span 2;
+            height:45px;
+            margin-top:35px;
+            background-color: #52d400;
+            border-radius: 5px;
+            font-size: 18px;
+            color:#fff;
+        }
+        button:hover{
+            cursor:pointer;
+            color:#000;
+            background-color: #fff;
+        }
+        p{
+            font-size: 18px;
+            color:#000;
+        }
+        .error {
+            position: relative;
+            animation: shake .1s linear;
+            animation-iteration-count: 3;
+            border:1px solid red;
+        }
+
+        @keyframes shake {
+            0% { left: -3px; }
+            100% { right: -3px; }
+        }
+        .notification{
+            position:absolute;
+            right:27%;
+            color:#000;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Weeki</h1>
+
+
+    <div class = "hero">
+        <p>Obs! Kun virksomhedens leder kan registere virksomheden</p>
+        <div class = "container">
+            <form id = "createUserForm">
+                <label for = "companyName">Virksomhedens Navn</label><input name = "companyName" id = "companyName" type = "text" required>
+                <label for ="companyPhone">Virksomhedens Telefon</label><input name = "companyPhone" id = "companyPhone" type = "number" required>
+                <label for = "firstName">Fornavn</label><input name = "firstName" id = "firstName" type = "text" required>
+                <label for = "lastName">Efternavn</label><input name = "lastName" id = "lastName" type = "text" required>
+                <label for = "phone">Telefon</label><input name = "phone" id = "phone" type = "tel" required>
+
+                <label for = "username">Brugernavn</label><input name = "username" id = "username" type = "text"  required oninput="validateUsername(value)">
+                <label for = "password">Adgangskode</label><input name = "password" id = "password" type = "password" required>
+                <label for = "repassword">Genindtast Adgangskode</label><input id = "repassword" type = "password" required oninput="validateMatch()">
+                <label for = "email">E-mail</label><input name = "email" id = "email" type = "email" required>
+                <button>Opret Virksomhed</button>
+            </form>
+
+        </div>
+    </div>
+
+
+<script src = "createUser.js">
+
+
+</script>
+</body>
+</html>
