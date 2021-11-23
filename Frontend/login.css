@@ -45,3 +45,12 @@ button:hover{
     background: #8b8b8b;
     color:#fff;
 }
+#newUser{
+    position:relative;
+    top:100px;
+    font-size: 22px;
+    color: #aaaaaa;
+}
+#newUser:hover{
+    color:#fff;
+}

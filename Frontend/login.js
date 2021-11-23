@@ -24,9 +24,10 @@ async function loginAction(url, formData){
 
     await fetchAdmin();
     adminList.forEach(admin => {
+        console.log(admin);
         if(admin.username === plainData.username){
             if(admin.password === plainData.password){
-                window.location.href = "../Html/frontpage.html?id="+admin.adminId+"&type=admin";
+                window.location.href = "../UI/frontpage.html?id="+admin.adminId+"&type=admin";
             }
         }
     })
@@ -40,6 +41,7 @@ async function fetchAdmin(){
         await promise.then(data => {
             data.forEach(admin => {
                 adminList.push(admin);
+                console.log(admin);
             })
         })
     }
