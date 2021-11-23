@@ -27,7 +27,7 @@ async function loginAction(url, formData){
         console.log(admin);
         if(admin.username === plainData.username){
             if(admin.password === plainData.password){
-                window.location.href = "frontpage.html?id="+admin.adminId+"&type=admin";
+                window.location.href = "Html/UI/frontpage.html?id="+admin.adminId+"&type=admin";
             }
         }
     })
