@@ -1,7 +1,13 @@
 package com.example.eksameprojekt.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 
+@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="@id")
 @Entity
 public class Admin {
 
@@ -33,8 +39,11 @@ public class Admin {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public int getPhone() { return phone; }
     public void setPhone(int phone) { this.phone = phone; }
+    //@JsonManagedReference
     public Company getCompany() { return company; }
-    public void setCompany(Company company) { this.company = company; }
+    public void setCompany(Company company) {
+            this.company = company;
+    }
 
     @Override
     public String toString() {

@@ -30,22 +30,14 @@ public class RestController {
     public void loginActionUser(@RequestBody User admin){
 
     }
-
+    @GetMapping("/fetchCompany")
+    public List<Company> fetchCompany(){
+        return companyRepository.findAll();
+    }
     //Fetch Admin & user
     @GetMapping("/fetchAdmin")
     public List<Admin> fetchAdmin(){
-       List<Admin> list = adminRepository.findAll();
-
-       if(list.size() == 2){
-           return list ;
-       }
-        //return list ;
-        else {
-            for(int i = 2; i < list.size(); i++){
-                list.remove(i);
-            }
-           return list;
-       }
+       return adminRepository.findAll();
     }
     @GetMapping("/fetchUser")
     public List<User> fetchUser(){

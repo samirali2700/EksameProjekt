@@ -1,7 +1,14 @@
 package com.example.eksameprojekt.Model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.*;
+//@EqualsAndHashCode(exclude = "admin",callSuper = false)
+@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="@id")
 @Entity
 public class Company {
 
@@ -25,8 +32,13 @@ public class Company {
     public void setCompanyPhone(int companyPhone) { this.companyPhone = companyPhone; }
     public int getEmpolyeeCount() { return empolyeeCount; }
     public void setEmpolyeeCount(int empolyeeCount) { this.empolyeeCount = empolyeeCount; }
+    //@JsonBackReference
     public Admin getAdmin() { return admin; }
-    public void setAdmin(Admin admin) { this.admin = admin; }
+    public void setAdmin(Admin admin) {
+        if(this.admin == null) {
+            this.admin = admin;
+        }
+    }
 
     @Override
     public String toString() {
