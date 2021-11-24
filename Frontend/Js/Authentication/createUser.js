@@ -85,8 +85,7 @@ async function submitNewUser(formData){
                         },
                         body: JSON.stringify(adminObjTemp)
                     }
-                    console.log(adminObjTemp);
-                    console.log(admin);
+
             await fetch("http://localhost:7777/saveAdmin", JSONAdmin)
                     .catch(error => console.warn("Failed To Save admin With CompanyID: "+error));
 
