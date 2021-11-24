@@ -35,7 +35,7 @@ async function loginAction(url, formData){
 }
 let adminList = [];
 async function fetchAdmin(){
-    const url = "https://172.31.21.69:7777/fetchAdmin"
+    const url = "https://13.51.6.30:7777/fetchAdmin"
     try{
         const promise = fetch(url).then(response => response.json());
         await promise.then(data => {
