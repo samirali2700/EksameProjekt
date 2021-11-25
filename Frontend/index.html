@@ -5,17 +5,35 @@
     <title>Log In</title>
     <link rel = "stylesheet" href="Css/Main.css">
     <link rel = "stylesheet" href="Css/login.css">
+    <style>
+        p{
+            color:#808080FF;
+            margin-bottom:15px;
+            font-size: 14px;
+        }
+        label{
+            font-size: 12px;
+            color:#808080FF;
+        }
+
+    </style>
 </head>
 <body>
+    <div class = "parent-container">
+        <div class = "container">
+            <h1>Velkommen Tilbage</h1>
+            <p>Login og planlæg din vagtplan nemt og hutigt!</p>
+            <form id = "login-form" action = "http://localhost:7777/loginForm" method = "post">
+                <label for = "usernameField">Brugernavn*</label>
+                <input id ="usernameField" name = "username" type = "text" placeholder="Bruger" required  autocomplete="off">
 
-    <div class = "container">
-        <h1>Log ind</h1>
-        <form id = "login-form" action = "http://localhost:7777/loginForm" method = "post">
-            <input name = "username" type = "text" placeholder="Bruger" required autocomplete="username">
-            <input name = "password" type = "password" placeholder="Adganskode" required autocomplete="password">
-            <button>Log In</button>
-        </form>
-        <a id = "newUser" href ="Html/User/createUser.html" >Oprette Virksomhed?</a>
+                <label for = "passwordField">Adgangskode*</label>
+                    <input id = "passwordField" name = "password" type = "password" placeholder="Adganskode" required>
+
+                <button>Log In</button>
+            </form>
+            <span>Har ikke en bruger?<a id = "newUser" href ="Html/User/createUser.html">Registere din Virksomhed her</a></span>
+        </div>
     </div>
 <script src="Js/Authentication/login.js"></script>
 </body>

@@ -65,17 +65,26 @@ public class RestController {
     @PostMapping(value = "/createCompany", consumes = "application/json")
     public Optional<Company> createCompany(@RequestBody Company company){
         companyRepository.save(company);
-        return companyRepository.getCompanyByAdmin(company.getAdmin().getAdminId());
+        return companyRepository.getCompanyId(company.getCompanyName(), company.getCompanyPhone());
     }
 
     @PostMapping(value = "/saveAdmin", consumes = "application/json")
     public void saveAdmin(@RequestBody Admin admin){
         adminRepository.save(admin);
     }
-
     @GetMapping("/validateUsername/{username}")
     public int validateUsername(@PathVariable String username){
         return adminRepository.getUsernameMatch(username);
     }
+
+
+
+    //Company
+    @GetMapping("/setAdminId/{adminId}/{companyId}")
+    public void setAdminId(@PathVariable int adminId, @PathVariable int companyId){
+        companyRepository.setAdminId(adminId, companyId);
+    }
+
+
 
 }

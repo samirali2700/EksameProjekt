@@ -1,3 +1,6 @@
+let companyInstance;
+let adminInstance;
+
 addEventListener("DOMContentLoaded", submitForm);
 
 function submitForm(){
@@ -18,76 +21,206 @@ async function createUserSubmit(event){
     }
 
 }
+function nextStep(){
+    const parent = document.getElementById("body");
+    const div = document.createElement("div");
+    const parentDiv = document.createElement("div");
+    div.className = "loader";
+    parentDiv.className = "overlay";
+    parentDiv.id = "loading";
+    parentDiv.appendChild(div);
+
+    parent.appendChild(parentDiv);
+
+    const parentForm = document.getElementById("createUserForm");
+    const submitBtn = document.getElementById("submit-btn");
+
+    //Replacing inputs
+    const inputQuery = document.querySelectorAll("input");
+    const labelQuery = document.querySelectorAll("label");
+    for(let i = 0; i < inputQuery.length; i++) {
+        parentForm.removeChild(inputQuery.item(i));
+
+    }
+    for (let i = 0; i < labelQuery.length; i++){
+        parentForm.removeChild(labelQuery.item(i));
+    }
+
+    document.getElementById("obs-mess").remove();
+
+
+    const fNameLabel = document.createElement("label");
+    fNameLabel.setAttribute('for', 'firstName');
+    fNameLabel.innerHTML = "Fornavn";
+
+    const fNameInput = document.createElement("input");
+    fNameInput.setAttribute('type', 'text');
+    fNameInput.setAttribute('id', 'firstName');
+    fNameInput.setAttribute('name', 'firstName');
+
+
+    parentForm.insertBefore(fNameInput,parentForm.firstChild);
+    parentForm.insertBefore(fNameLabel, parentForm.firstChild);
+
+
+
+    const lNameLabel = document.createElement("label");
+    lNameLabel.setAttribute('for', 'lastName');
+    lNameLabel.innerHTML = "Efternavn";
+
+    const lNameInput = document.createElement("input");
+    lNameInput.setAttribute('type', 'text');
+    lNameInput.setAttribute('id', 'lastName');
+    lNameInput.setAttribute('name', 'lastName');
+
+
+    submitBtn.before(lNameLabel);
+    submitBtn.before(lNameInput);
+
+
+    const emailLabel = document.createElement("label");
+    emailLabel.setAttribute('for', 'email');
+    emailLabel.innerHTML = "E-mail";
+
+    const emailInput = document.createElement("input");
+    emailInput.setAttribute('type', 'email');
+    emailInput.setAttribute('id', 'email');
+    emailInput.setAttribute('name', 'email');
+
+
+
+    submitBtn.before(emailLabel);
+    submitBtn.before(emailInput);
+
+
+    const userLabel = document.createElement("label");
+    userLabel.setAttribute('for', 'username');
+    userLabel.innerHTML = "Brugernavn";
+
+    const userInput = document.createElement("input");
+    userInput.setAttribute('type', 'text');
+    userInput.setAttribute('id', 'username');
+    userInput.setAttribute('name', 'username');
+
+    submitBtn.before(userLabel);
+    submitBtn.before(userInput);
+
+
+    const passLabel = document.createElement("label");
+    passLabel.setAttribute('for', 'password');
+    passLabel.innerHTML = "Adganskode";
+
+    const passInput = document.createElement("input");
+    passInput.setAttribute('type', 'password');
+    passInput.setAttribute('id', 'password');
+    passInput.setAttribute('name', 'password');
+
+    submitBtn.before(passLabel);
+    submitBtn.before(passInput);
+
+
+    document.getElementById("submit-btn").innerHTML = "Opret Bruger";
+
+
+
+
+    parent.removeChild(parentDiv);
+
+}
 async function submitNewUser(formData){
     const plainData = Object.fromEntries(formData.entries());
     const adminUrl = "http://localhost:7777/createAdmin";
     const companyUrl = "http://localhost:7777/createCompany";
 
+   // console.log(plainData.companyName)
+    //console.log(plainData.username)
+    nextStep();
 
-    //Admin Object is defined
-    const adminObj = {
-        username: plainData.username,
-        password: plainData.password,
-        firstName: plainData.firstName,
-        lastName: plainData.lastName,
-        phone: plainData.phone,
-        email: plainData.email
+  /*  if(document.getElementById("sumbit-btn").innerHTML === 'Næste Trin'){
+        //Savin company to db First, and receive company id when stored
+        const companyObj = {
+            companyName: plainData.companyName,
+            companyPhone: plainData.companyPhone,
+            employeeCount: 0,
+        }
+
+        const JSONCompanyObj = {
+            method: "POST",
+            headers:{
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(companyObj)
+        }
+
+        await fetch(companyUrl,JSONCompanyObj)
+            .then(response => response.json())
+            .then(data => {
+                companyInstance = data;
+
+                }
+            )
+            .catch(error => {
+                console.warn("Failed To Save Company To DB: "+error)
+            });
+
     }
-    const adminToString = JSON.stringify(adminObj);
-    const JSONAdminObj = {
-        method: "POST",
-        headers:{
-            "Content-type": "application/json"
-        },
-        body: adminToString
-    }
-    let admin;
-    let company;
+    else{
+        console.log(plainData.username)
 
-            await fetch(adminUrl, JSONAdminObj).then(response => response.json())
-                .then(a => admin = a)
-                .catch(error => console.warn("Failed To Save Admin To DB: "+error));
+        //Admin Object is defined
+        const adminObj = {
+            username: plainData.username,
+            password: plainData.password,
+            firstName: plainData.firstName,
+            lastName: plainData.lastName,
+            phone: plainData.phone,
+            email: plainData.email,
+            company: companyInstance
+        }
+        const JSONAdminObj = {
+            method: "POST",
+            headers:{
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(adminObj)
+        }
 
-                    const companyObj = {
-                        companyName: plainData.companyName,
-                        companyPhone: plainData.companyPhone,
-                        employeeCount: 0,
-                        admin: admin
-                    }
-                    const JSONCompanyObj = {
-                        method: "POST",
-                        headers:{
-                            "Content-type": "application/json"
-                        },
-                        body: JSON.stringify(companyObj)
-                    }
 
-            await fetch(companyUrl,JSONCompanyObj).then(response => response.json())
-                .then(c => company = c)
-                .catch(error => console.warn("Failed To Save Company To DB: "+error));
+        await fetch(adminUrl, JSONAdminObj).then(response => response.json())
+            .then(data => {
+                adminInstance = data
+            })
+            .catch(error => console.warn("Failed To Save Admin To DB: "+error));
 
-                    console.log(admin);
-                    const adminObjTemp = {
-                        adminId: admin.adminId,
-                        username: admin.username,
-                        password: admin.password,
-                        firstName: admin.firstName,
-                        lastName: admin.lastName,
-                        phone: admin.phone,
-                        email: admin.email,
-                        company: company,
+        console.log(adminInstance.adminId);
+       // await fetch("http://localhost:7777/setAdminId/"+adminInstance.adminId+"/"+companyInstance.companyId);
 
-                    }
-                    const JSONAdmin = {
-                        method: "POSt",
-                        headers: {
-                            "Content-type": "application/json"
-                        },
-                        body: JSON.stringify(adminObjTemp)
-                    }
+        //window.location.href = "../UI/frontpage.html?id="+admin.adminId+"&type=admin"
 
-            await fetch("http://localhost:7777/saveAdmin", JSONAdmin)
-                    .catch(error => console.warn("Failed To Save admin With CompanyID: "+error));
+    }*/
+   /*
+
+        const adminToString = ;
+
+        let admin;
+        let company;
+
+
+
+                        const JSONAdmin = {
+                            method: "POSt",
+                            headers: {
+                                "Content-type": "application/json"
+                            },
+                            body: JSON.stringify(adminObjTemp)
+                        }
+
+                await fetch("http://localhost:7777/saveAdmin", JSONAdmin)
+                    .then(() => {
+
+                    })
+                        .catch(error => console.warn("Failed To Save admin With CompanyID: "+error));
+    */
 
 
 

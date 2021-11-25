@@ -4,69 +4,92 @@
     <meta charset="UTF-8">
     <title>Oprette Virksomhed</title>
 
-
     <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
         body {
             background: rgba(47, 83, 7, 0.29);
         }
-        h1{
-            margin-top:20px;
-            text-align: center;
-            font-size: 56px;
-            text-shadow: -2px -1px #52d400, -2px 1px 2px black;
+        .parent-container{
+            background: #fff;
+            width:50%;
+            height:100vh;
+            position:fixed;
         }
-        .hero{
-            width:60%;
-
-            margin:0 auto;
-            text-align: center;
-            border-radius: 8px;
-        }
-        .container{
+        /*.container{
             border:1px solid rgba(4, 130, 11, 0.68);
             margin: 0 auto;
             text-align: left;
             padding:75px 75px 75px 75px;
             border-radius: 8px;
             font-size: 18px;
-            background-color: #eee;
+            background: #2b2b35;
+            color:#eee;
+            width:90%;
+
+        }*/
+        .container{
+            width:90%;
+            position: relative;
+            top:5vh;
+            left:10%;
+            padding:5px 0;
+            text-align: left;
+            color:#000;
+            font-family: MTG Sans,Helvetica,Arial,sans-serif;
+            font-size: 16px;
 
         }
-        form{
+        /*form{
             display: grid;
-            grid-template-columns: 1.5fr 2fr;
+            grid-template-columns: 1fr 2fr;
             grid-row-gap:20px;
             grid-column-gap: 15px;
             align-items: center;
-        }
+        }*/
         label, input{
-            height:30px;
+            height:45px;
+            display: block;
+        }
+
+        input{
+            padding-left:25px;
+            border:1px solid #000;
+            width:90%;
         }
         label{
-            border-bottom: 1px solid black;
-        }
-        input{
-            padding:0 15px;
-            border:1px solid #000;
+            margin-top:15px;
+            margin-bottom:-15px;
+            font-size: 14px;
+            color:grey;
         }
         input:focus{outline:none;}
         button{
-            grid-column: 1 / span 2;
             height:45px;
             margin-top:35px;
-            background-color: #52d400;
-            border-radius: 5px;
+            background-color: #26ddaa;
+            border-radius: 3px;
             font-size: 18px;
             color:#fff;
+            width:90%;
+            text-align: left;
+            padding-left:25px;
+            border:none;
         }
         button:hover{
             cursor:pointer;
             color:#000;
-            background-color: #fff;
+
         }
         p{
-            font-size: 18px;
-            color:#000;
+            font-size: 16px;
+            color:grey;
+            font-weight: bold;
+            text-align: center;
+            margin-top:100px;
         }
         .error {
             position: relative;
@@ -85,27 +108,50 @@
             color:#000;
             font-size: 16px;
         }
+        #name-container{
+            width:90%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 5px;
+        }
+        #name-container input{width:100%;}
+
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+            margin:40% auto;
+        }
+        .overlay{
+            position:absolute;
+            width:50%;
+            height:100vh;
+            z-index: 222222;
+            background-color: #8b8b8b;
+            opacity: 50%;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
-<body>
-    <h1>Welcome to Weeki</h1>
+<body id = "body">
 
-
-    <div class = "hero">
-        <p>Obs! Kun virksomhedens leder kan registere virksomheden</p>
+    <div class = "parent-container">
+        <p id = obs-mess>Obs! Kun virksomhedens leder kan registere virksomheden</p>
         <div class = "container">
-            <form id = "createUserForm">
-                <label for = "companyName">Virksomhedens Navn</label><input name = "companyName" id = "companyName" type = "text" required>
-                <label for ="companyPhone">Virksomhedens Telefon</label><input name = "companyPhone" id = "companyPhone" type = "number" required>
-                <label for = "firstName">Fornavn</label><input name = "firstName" id = "firstName" type = "text" required>
-                <label for = "lastName">Efternavn</label><input name = "lastName" id = "lastName" type = "text" required>
-                <label for = "phone">Telefon</label><input name = "phone" id = "phone" type = "tel" required>
 
-                <label for = "username">Brugernavn</label><input name = "username" id = "username" type = "text"  required oninput="validateUsername(value)">
-                <label for = "password">Adgangskode</label><input name = "password" id = "password" type = "password" required>
-                <label for = "repassword">Genindtast Adgangskode</label><input id = "repassword" type = "password" required oninput="validateMatch()">
-                <label for = "email">E-mail</label><input name = "email" id = "email" type = "email" required>
-                <button>Opret Virksomhed</button>
+            <form id = "createUserForm">
+                <label for = "companyName">Virksomhedens Navn</label>
+                    <input name = "companyName" id = "companyName" type = "text" >
+                <label for ="companyPhone">Virksomhedens Telefon</label>
+                    <input name = "companyPhone" id = "companyPhone" type = "number" >
+
+                <button id ="submit-btn">Næste Trin</button>
             </form>
 
         </div>

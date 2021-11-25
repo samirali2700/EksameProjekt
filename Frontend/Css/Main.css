@@ -10,43 +10,44 @@ li{
     list-style-type: none;
 }
 #current{
-    border-bottom: 2px solid #000;
+   /* border-bottom: 2px solid #000;*/
+}
 
-}
-a{
-    text-decoration: none;
-    color:#eee;
-}
 
 .header{
-    height:100px;
-    background: rgba(61, 101, 16, 0.57);
+    height:75px;
+   /* background: rgba(61, 101, 16, 0.57);*/
     /*background: rgba(47, 83, 7, 0.78);*/
-    border-bottom:2px solid rgb(0, 0, 0);
+    border-bottom:1px solid rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
 }
 .logo{
-    width:150px;
-
+    width:200px;
     border:1px solid black;
     height:100%;
 }
+img{
+    display: block;
+
+}
 .nav-bar{
-    width:40%;
-    height:100%;
+    display: block;
 }
 .nav-bar ul {
     display: flex;
+    height:50px;
     align-items: center;
     justify-content: space-between;
-    height:100%;
+    position:relative;
+    top:calc(100% - 50px);
 }
 .nav-bar li {
-    color:#eee;
-    font-size: 26px;
+    color:#000;
+    font-size: 20px;
     display: block;
-    width:100%;
+    width:150px;
+    height:50px;
     padding:10px 0;
     text-align: center;
 }

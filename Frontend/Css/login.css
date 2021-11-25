@@ -1,15 +1,22 @@
+body{
+
+}
+.parent-container{
+    background: #fff;
+    width:50%;
+    height:100vh;
+    position:fixed;
+}
 .container{
-    width:35%;
-    position:relative;
-    top:100px;
-    left:32.5%;
-    height:550px;
-    border:1px solid black;
-    padding:100px 0;
-    text-align: center;
-    background: #2b2b35;
-    color:#fff;
+    width:80%;
+    position: relative;
+    top:15vh;
+    left:20%;
+    padding:100px 0 0 50px;
+    text-align: left;
+    color:#000;
     font-family: MTG Sans,Helvetica,Arial,sans-serif;
+    font-size: 16px;
 }
 h1{
     margin-bottom:25px;
@@ -19,22 +26,28 @@ h1{
 }
 input{
     color:#eee;
-    padding:5px 7px;
+    padding:0 12px;
     display: block;
-    width:65%;
+    width:70%;
     height:45px;
-    margin:0 auto 15px auto;
+    margin:5px 0 15px 0;
+    border:none;
     background-color: rgb(116, 116, 116);
-    font-size: 16px;
 }
 
 button{
     display: block;
-    width:22.5%;
+    width:70%;
     height:45px;
-    margin: 55px auto 0 auto;
+    margin: 75px 0 15px 0;
+    padding:0 25px;
+    text-align: left;
     font-size: 16px;
-    background: #ffffff;
+    background: #26ddaa;
+    border:none;
+    font-weight: bold;
+    border-radius:3px;
+    color:#fff;
 }
 input, button, .container{
     border-radius: 5px;
@@ -46,11 +59,10 @@ button:hover{
     color:#fff;
 }
 #newUser{
-    position:relative;
-    top:100px;
-    font-size: 22px;
-    color: #aaaaaa;
+    color: #4a90e2;
+    text-decoration: none;
+    margin-left: 15px;
 }
-#newUser:hover{
-    color:#fff;
+#login-fail-div{
+    position : absolute;
 }
